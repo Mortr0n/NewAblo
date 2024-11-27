@@ -1,0 +1,85 @@
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore dependency directories
+node_modules/
+vendor/
+
+# Ignore environment and configuration files
+.env
+*.env.local
+*.env.development
+*.env.test
+*.env.production
+
+# Ignore build outputs
+dist/
+build/
+out/
+*.log
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.iml
+
+# Ignore compiled files
+*.class
+*.dll
+*.exe
+*.so
+*.pyc
+*.pyo
+*.o
+*.out
+
+# Ignore Go-specific files
+*.exe
+*.test
+*.out
+*.tmp
+
+# Ignore Unity specific files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+Assets/AssetStoreTools*
+UserSettings/
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Ignore specific logs and debugging files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore compressed files
+*.gz
+*.zip
+*.7z
+*.tar
+
+# Ignore macOS system files
+**/.DS_Store
+
+# Ignore Linux system files
+**/.Trash-*
+
+# Ignore Windows system files
+*.lnk
+desktop.ini
+
+# Custom ignore for secrets or specific files
+secrets.json
+my-private-config.json
+
+# Exclude .gitignore from being ignored
+!.gitignore
