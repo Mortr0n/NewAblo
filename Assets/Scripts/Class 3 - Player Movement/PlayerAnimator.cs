@@ -4,13 +4,14 @@ public class PlayerAnimator : BasicAnimator
 {
     void Update()
     {
-        deltaPos = transform.position - oldPos;
+        DeltaMovement();
+        //deltaPos = transform.position - oldPos;
 
-        if (deltaPos.sqrMagnitude > .01f * Time.deltaTime)
-                SetWalking(true);
-        else 
-            SetWalking(false);
+        //if (deltaPos.sqrMagnitude > .01f * Time.deltaTime)
+        //        SetWalking(true);
+        //else 
+        //    SetWalking(false);
 
-        oldPos = transform.position;
+        //oldPos = transform.position;
     }
 }
