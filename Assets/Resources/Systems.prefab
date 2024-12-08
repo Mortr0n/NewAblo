@@ -180,6 +180,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuMusic: {fileID: 8300000, guid: 26364aaf1f64b40c1a047b0bacfbd10e, type: 3}
   gameMusic: {fileID: 8300000, guid: 87890a66193394e3cb7d6284cc6b4344, type: 3}
+  gameMusicList:
+  - {fileID: 8300000, guid: 975e989114c92e3439d76a1b011fc2bf, type: 3}
+  - {fileID: 8300000, guid: 5719a9049a7702d49b94bbb50c417773, type: 3}
+  - {fileID: 8300000, guid: 55b29cbf876dcb440932e8029869c4fb, type: 3}
+  - {fileID: 8300000, guid: 9535617594ac4c24c89613f29e3bd73a, type: 3}
+  - {fileID: 8300000, guid: 3e087c8e402b3064fadbd75c8109dfff, type: 3}
+  menuMusicList: []
   sceneSwitchSwoosh: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   pilotLaser: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
   musicChannel: {fileID: 7145747091691171295}

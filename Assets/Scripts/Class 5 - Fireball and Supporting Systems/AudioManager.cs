@@ -6,6 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioClip menuMusic;
     [SerializeField] AudioClip gameMusic;
+    [SerializeField] List<AudioClip> gameMusicList;
+    [SerializeField] List<AudioClip> menuMusicList;
 
     [SerializeField] AudioClip sceneSwitchSwoosh;
     [SerializeField] AudioClip pilotLaser;
@@ -16,6 +18,9 @@ public class AudioManager : MonoBehaviour
 
     int currentSFXChannel = 0;
     int highestSFXChannel = 0;
+
+    private List<AudioClip> currentPlaylist;
+    private AudioClip lastClip;
 
     public static AudioManager instance;
     void Awake()
@@ -33,16 +38,46 @@ public class AudioManager : MonoBehaviour
         //highestSFXChannel = Mathf.Max(sfxChannels.Count - 1, 0); // debugging earlier
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void PlayPlaylist(List<AudioClip> playlist)
     {
-        
+        if (playlist ==  null || playlist.Count == 0)
+        {
+            Debug.LogWarning("no songs in playlist to play");
+            return;
+        }
+
+        currentPlaylist = playlist;
+        PlayNextTrack();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void PlayNextTrack()
     {
-        
+        if (currentPlaylist == null || currentPlaylist.Count == 0) { return; }
+        AudioClip nextClip = GetRandomClip();
+        if (nextClip == null) { return; }
+        PlayMusic(nextClip);
+        StartCoroutine(WaitForTrackToEnd(nextClip.length));
+    }
+
+    private AudioClip GetRandomClip()
+    {
+        if (currentPlaylist.Count ==1)
+            return currentPlaylist[0];
+
+        AudioClip nextClip;
+        do
+        {
+            nextClip = currentPlaylist[Random.Range(0, currentPlaylist.Count)];
+        } while (nextClip == lastClip);
+        lastClip = nextClip;
+
+        return nextClip;
+    }
+
+    private IEnumerator WaitForTrackToEnd(float trackLength)
+    {
+        yield return new WaitForSeconds(trackLength);
+        PlayNextTrack();
     }
 
     #region Music
@@ -65,11 +100,13 @@ public class AudioManager : MonoBehaviour
     public void PlayMenuMusic()
     {
         PlayMusic(menuMusic);
+        //PlayPlaylist(menuMusicList);
     }
     public void PlayGameMusic()
     {
-            PlayMusic(gameMusic);
-
+        //PlayMusic(gameMusic);
+        Debug.Log($"GameMusic ${gameMusicList} {gameMusic.length}");
+            PlayPlaylist(gameMusicList);
     }
 
     public void StopMusic()
